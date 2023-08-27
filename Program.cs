@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging.Console;
 using OpenTelemetry;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Resources;
+using OpenTelemetry.Exporter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,7 +45,7 @@ using var loggerFactory = LoggerFactory.Create(builder =>
         options.SetResourceBuilder(appResourceBuilder);
         options.AddOtlpExporter(option =>
         {
-            option.Protocol = OpenTelemetry.Exporter.OpenTelemetryProtocol.OtlpExportProtocol.HttpProtobuf;
+            option.Protocol = OtlpExportProtocol.HttpProtobuf;
             option.Endpoint = new Uri("https://otlp-custom-https-otel.apps.cluster-hvnhl.hvnhl.sandbox2235.opentlc.com/");
             // option.Endpoint = new Uri("https://otel-collector.otel.svc.cluster.local:4317");
             
