@@ -47,7 +47,7 @@ using var loggerFactory = LoggerFactory.Create(builder =>
         {
             option.Protocol = OtlpExportProtocol.HttpProtobuf;
             // option.Endpoint = new Uri("https://otlp-custom-https-otel.apps.cluster-hvnhl.hvnhl.sandbox2235.opentlc.com/");
-            option.Endpoint = new Uri("https://otel-collector.otel.svc.cluster.local:4318");
+            option.Endpoint = new Uri("http://otel-collector.otel.svc.cluster.local:4318");
             
         });
     });
