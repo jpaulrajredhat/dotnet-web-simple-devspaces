@@ -45,7 +45,7 @@ using var loggerFactory = LoggerFactory.Create(builder =>
         options.AddOtlpExporter(option =>
         {
             option.Protocol = OpenTelemetry.Exporter.OtlpExportProtocol.HttpProtobuf;
-            option.Endpoint = new Uri("https://otlp-custom-https-otel.apps.cluster-nbrpd.nbrpd.sandbox410.opentlc.com/");
+            option.Endpoint = new Uri("https://otlp-custom-https-otel.apps.cluster-hvnhl.hvnhl.sandbox2235.opentlc.com/");
             // option.Endpoint = new Uri("https://otel-collector.otel.svc.cluster.local:4317");
             
         });
