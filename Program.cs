@@ -50,8 +50,8 @@ using var loggerFactory = LoggerFactory.Create(builder =>
             // option.Endpoint = new Uri("http://otel-collector.otel.svc.cluster.local:4318");
 
             option.Protocol = OtlpExportProtocol.Grpc;
-            option.Endpoint = new Uri("https://otel-custom-grpc-otel.apps.cluster-hvnhl.hvnhl.sandbox2235.opentlc.com");
-            // option.Endpoint = new Uri("http://otel-collector.otel.svc.cluster.local:4317");
+            // option.Endpoint = new Uri("https://otel-custom-grpc-otel.apps.cluster-hvnhl.hvnhl.sandbox2235.opentlc.com"); // Expose gRPC endpoint as route doesn't work!!!
+            option.Endpoint = new Uri("http://otel-collector.otel.svc.cluster.local:4317"); // Only gRPC service endpoint works, 
             option.ExportProcessorType = ExportProcessorType.Batch;
             
         });
