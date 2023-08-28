@@ -52,6 +52,7 @@ using var loggerFactory = LoggerFactory.Create(builder =>
             option.Protocol = OtlpExportProtocol.Grpc;
             option.Endpoint = new Uri("https://otel-custom-grpc-otel.apps.cluster-hvnhl.hvnhl.sandbox2235.opentlc.com");
             // option.Endpoint = new Uri("http://otel-collector.otel.svc.cluster.local:4317");
+            option.ExportProcessorType = ExportProcessorType.Batch;
             
         });
     });
