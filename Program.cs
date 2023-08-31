@@ -49,11 +49,6 @@ using var loggerFactory = LoggerFactory.Create(builder =>
             // option.Endpoint = new Uri("https://otlp-custom-https-otel.apps.cluster-hvnhl.hvnhl.sandbox2235.opentlc.com/");
             // option.Endpoint = new Uri("http://otel-collector.otel.svc.cluster.local:4318");
 
-            var otel_collector_addr = System.Environment.GetEnvironmentVariable("MY_OTELCOL_COLLECTOR_SERVICE_HOST");
-            var otel_collector_port = System.Environment.GetEnvironmentVariable("MY_OTELCOL_COLLECTOR_SERVICE_PORT");
-            var otel_collector_endpoint = [http://]http:// + otel_collector_addr + “:” + otel_collector_port;
-            Console.WriteLine(otel_collector_endpoint + ".....writing console output...");
-
             option.Protocol = OtlpExportProtocol.Grpc;
             // option.Endpoint = new Uri("https://otel-custom-grpc-otel.apps.cluster-hvnhl.hvnhl.sandbox2235.opentlc.com"); // Expose gRPC endpoint as route doesn't work!!!
             option.Endpoint = new Uri("http://otel-collector.otel.svc.cluster.local:4317"); // Only gRPC service endpoint works, 
@@ -62,6 +57,11 @@ using var loggerFactory = LoggerFactory.Create(builder =>
         });
     });
 });
+
+var otel_collector_addr = System.Environment.GetEnvironmentVariable("MY_OTELCOL_COLLECTOR_SERVICE_HOST");
+var otel_collector_port = System.Environment.GetEnvironmentVariable("MY_OTELCOL_COLLECTOR_SERVICE_PORT");
+var otel_collector_endpoint = "http://" + otel_collector_addr + ":" + otel_collector_port;
+Console.WriteLine(otel_collector_endpoint + "        .....writing console output...");
 
 var logger = loggerFactory.CreateLogger<Program>();
 
